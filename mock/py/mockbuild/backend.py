@@ -90,6 +90,8 @@ class Commands(object):
     @traceLog()
     def scrub(self, scrub_opts):
         """clean out chroot and/or cache dirs with extreme prejudice :)"""
+        if self.backup:
+            self.backup_results()
         statestr = "scrub %s" % scrub_opts
         self.state.start(statestr)
         try:
